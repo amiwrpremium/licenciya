@@ -8,8 +8,8 @@ setup(
     description='Licensing Library',
     author='amiwrpremium',
     author_email='amiwrpremium@gmail.com',
-    url='https://github.com/amiwrpremium/licensiha/',
-    download_url='https://github.com/amiwrpremium/licensiha/archive/refs/tags/v_0.0.1.tar.gz',
+    url='https://github.com/amiwrpremium/licencia/',
+    download_url='https://github.com/amiwrpremium/licencia/releases/tag/v_0.0.1',
     keywords=['License', 'Protection'],
     install_requires=[
         'requests',
