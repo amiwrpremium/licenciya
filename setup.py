@@ -1,15 +1,15 @@
 from distutils.core import setup
 
 setup(
-    name='licencia',
-    packages=['licencia'],
+    name='licenciya',
+    packages=['licenciya'],
     version='0.0.1',
     license='MIT',
     description='Licensing Library',
     author='amiwrpremium',
     author_email='amiwrpremium@gmail.com',
-    url='https://github.com/amiwrpremium/licencia/',
-    download_url='https://github.com/amiwrpremium/licencia/releases/tag/v_0.0.1',
+    url='https://github.com/amiwrpremium/licenciya/',
+    download_url='https://github.com/amiwrpremium/licenciya/releases/tag/v_0.0.1',
     keywords=['License', 'Protection'],
     install_requires=[
         'requests',

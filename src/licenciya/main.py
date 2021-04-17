@@ -7,7 +7,7 @@ import os
 import exceptions
 
 
-class Licencia:
+class Licenciya:
     def __init__(self):
         self.config = None
         self.server_submit_url = None
