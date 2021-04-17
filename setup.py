@@ -1,8 +1,8 @@
 from distutils.core import setup
 
 setup(
-    name='licensiha',
-    packages=['licensiha'],
+    name='licencia',
+    packages=['licencia'],
     version='0.0.1',
     license='MIT',
     description='Licensing Library',
