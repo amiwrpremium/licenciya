@@ -11,18 +11,19 @@ I know if it's licensing tool it shouldn't be open source and all.
 But it's for small purposes for beginners like me.
 
 # Installation
-1) You can install it using pip:
+You can install it using pip:
 <br>
 `pip install licensiya`
 <br>
 <br>
 <br>
-2) Or you can build it from source:
+Or you can build it from source:
 <br>
 That's on you. I don't know how you can do that but you can. 
 I've seen other people put this on their repository, I just always wanted to say that.<br>
 Why would you want to do that anyway when you can simply install by pip? 
-   You wanna show you are superior? Yeaah, that sound about right
+You wanna show you are superior? 
+Yeaah, that sound about right
 
 
 # How it works
