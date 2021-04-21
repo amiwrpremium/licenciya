@@ -3,4 +3,5 @@ setup.cfg
 setup.py
 src/licenciya/__init__.py
 src/licenciya/exceptions.py
+src/licenciya/helper.py
 src/licenciya/main.py

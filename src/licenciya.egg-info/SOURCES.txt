@@ -1,0 +1,13 @@
+LICENSE
+pyproject.toml
+setup.cfg
+setup.py
+src/licenciya/__init__.py
+src/licenciya/exceptions.py
+src/licenciya/helper.py
+src/licenciya/main.py
+src/licenciya.egg-info/PKG-INFO
+src/licenciya.egg-info/SOURCES.txt
+src/licenciya.egg-info/dependency_links.txt
+src/licenciya.egg-info/requires.txt
+src/licenciya.egg-info/top_level.txt

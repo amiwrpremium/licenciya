@@ -49,10 +49,8 @@ Maybe I'll make a website to automate that shit and give everyone access to the 
 ```
 from Licenser import LicenseApp
 
-li = LicenseApp()
+li = LicenseApp('api_key', 'api_secret')
 li.make_config_file('Data.ini')
-li.set_server_submit_url('https://amiwr-license.herokuapp.com/submit-license')
-li.set_server_validate_url('https://amiwr-license.herokuapp.com/validate-license')
 
 li.submit_license()  # If no license provided in config file, it prompts and input to get it from user
 
