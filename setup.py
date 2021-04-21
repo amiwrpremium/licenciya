@@ -3,13 +3,13 @@ from distutils.core import setup
 setup(
     name='licenciya',
     packages=['licenciya'],
-    version='0.0.5',
+    version='0.0.6',
     license='MIT',
     description='Licensing Library',
     author='amiwrpremium',
     author_email='amiwrpremium@gmail.com',
     url='https://github.com/amiwrpremium/licenciya/',
-    download_url='https://github.com/amiwrpremium/licenciya/releases/tag/v_0.0.5',
+    download_url='https://github.com/amiwrpremium/licenciya/releases/tag/v_0.0.6',
     keywords=['License', 'Protection'],
     install_requires=[
         'requests',
