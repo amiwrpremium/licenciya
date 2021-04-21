@@ -1,33 +1,28 @@
-import uuid
-import requests
-
 import configparser
 import os
+import uuid
 
-import exceptions
+import requests
+
+from . import exceptions
+
+base_url = "http://127.0.0.1:5000/api/v1/"
 
 
 class Licenciya:
-    def __init__(self):
+    def __init__(self, api_key, api_secret):
+        self.api_key = api_key
+        self.api_secret = api_secret
+
+        self.params = {
+            'api_key': self.api_key,
+            'api_secret': self.api_secret,
+        }
+
         self.config = None
-        self.server_submit_url = None
-        self.server_validate_url = None
-
-        self.pc_uuid = self.get_pc_uuid()
-
         self.config_file_set = False
 
-        pass
-
-    @staticmethod
-    def get_pc_uuid() -> str:
-        return str(uuid.UUID(int=uuid.getnode()))
-
-    def set_server_submit_url(self, url: str) -> None:
-        self.server_submit_url = url
-
-    def set_server_validate_url(self, url: str) -> None:
-        self.server_validate_url = url
+        self.pc_uuid = str(uuid.UUID(int=uuid.getnode()))
 
     def make_config_file(self, filename: str) -> None:
         if not os.path.exists(filename):
@@ -68,54 +63,50 @@ class Licenciya:
             configfile.close()
 
     def submit_license(self):
-        if self.server_submit_url:
-            if not self.license_is_added():
-                user_license = input("Enter License: ")
-                self.update_first_run(user_license)
-                url = self.server_submit_url
-                data = {
-                    'UUID': self.pc_uuid,
-                    'LICENSE': user_license,
-                }
+        url = base_url + "submit-license"
+        if not self.license_is_added():
+            user_license = input("Enter License: ")
+            self.update_first_run(user_license)
 
-                try:
-                    r = requests.post(url, data=data)
-                except Exception as e:
-                    return False
-
-                if r.status_code == 200:
-                    return True
-                else:
-                    return False
-            else:
-                pass
-        else:
-            raise exceptions.ServerValidateUrlNotSet
-
-    def validate_license(self):
-        user_license = self.get_license()
-        if self.server_validate_url:
-            url = self.server_validate_url
-            params = {
-                'UUID': self.pc_uuid,
-                'LICENSE': user_license,
+            data = {
+                'uuid': self.pc_uuid,
+                'license': user_license,
             }
+
             try:
-                r = requests.get(url, params=params)
+                r = requests.post(url, data=data, params=self.params)
             except Exception as e:
-                self.update_first_run_fail()
                 return False
 
             if r.status_code == 200:
-                response = r.json()
-                is_licensed = response['licensed']
-                if is_licensed:
-                    return True
-                else:
-                    self.update_first_run_fail()
-                    return False
+                return True
+            else:
+                return False
+        else:
+            pass
+
+    def validate_license(self):
+        url = base_url + "validate-license"
+        user_license = self.get_license()
+
+        data = {
+            'uuid': self.pc_uuid,
+            'license': user_license,
+        }
+        try:
+            r = requests.post(url, data=data, params=self.params)
+        except Exception as e:
+            self.update_first_run_fail()
+            return False
+
+        if r.status_code == 200:
+            response = r.json()
+            is_licensed = response['licensed']
+            if is_licensed:
+                return True
             else:
                 self.update_first_run_fail()
                 return False
         else:
-            raise exceptions.ServerValidateUrlNotSet
+            self.update_first_run_fail()
+            return False
